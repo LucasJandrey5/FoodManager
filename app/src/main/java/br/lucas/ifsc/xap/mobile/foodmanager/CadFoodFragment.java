@@ -37,6 +37,7 @@ public class CadFoodFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        this.view = inflater.inflate(R.layout.fragment_cad_food, container, false);
 
         this.etName = (EditText) view.findViewById(R.id.etNome);
         this.etDescription = (EditText) view.findViewById(R.id.etDescription);
@@ -45,15 +46,14 @@ public class CadFoodFragment extends Fragment implements View.OnClickListener {
         this.cbFrete = (CheckBox) view.findViewById(R.id.cbFreteGratis);
         this.btSalvar = (Button) view.findViewById(R.id.btSalvar);
 
-        this.view = inflater.inflate(R.layout.fragment_cad_food, container, false);
+        this.btSalvar.setOnClickListener(this);
+
         return view;
     }
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-
-            case R.id.btSalvar:
+       if (view.getId() == R.id.btSalvar){
 
                  Food f = new Food();
 
@@ -69,7 +69,7 @@ public class CadFoodFragment extends Fragment implements View.OnClickListener {
                 int duration = Toast.LENGTH_SHORT;
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
-                break;
+
         }
     }
 
